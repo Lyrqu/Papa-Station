@@ -17,7 +17,7 @@
 /obj/item/weapon/nullrod/attack_self(mob/user)
 	if(reskinned)
 		return
-	if(user.mind && (user.mind.assigned_role == "Chaplain"))
+	if(user.mind && (user.mind.assigned_role == "Kaplan"))
 		reskin_holy_weapon(user)
 
 /obj/item/weapon/nullrod/proc/reskin_holy_weapon(mob/M)
@@ -244,7 +244,7 @@
 /obj/item/weapon/nullrod/carp/attack_self(mob/living/user)
 	if(used_blessing)
 		return
-	if(user.mind && (user.mind.assigned_role != "Chaplain"))
+	if(user.mind && (user.mind.assigned_role != "Kaplan"))
 		return
 	user << "You are blessed by Carp-Sie. Wild space carp will no longer attack you."
 	user.faction |= "carp"
