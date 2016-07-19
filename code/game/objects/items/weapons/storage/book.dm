@@ -50,7 +50,7 @@ var/global/list/bibleitemstates =	list("bible", "koran", "scrapbook", "bible", "
 /obj/item/weapon/storage/book/bible/attack_self(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
-	if(ticker && !ticker.Bible_icon_state && H.job == "Chaplain")
+	if(ticker && !ticker.Bible_icon_state && H.job == "Kaplan")
 		//Open bible selection
 		var/dat = "<html><head><title>Pick Bible Style</title></head><body><center><h2>Pick a bible style</h2></center><table>"
 
@@ -127,7 +127,7 @@ var/global/list/bibleitemstates =	list("bible", "koran", "scrapbook", "bible", "
 /obj/item/weapon/storage/book/bible/attack(mob/living/M, mob/living/carbon/human/user)
 
 	var/chaplain = 0
-	if(user.mind && (user.mind.assigned_role == "Chaplain"))
+	if(user.mind && (user.mind.assigned_role == "Kaplan"))
 		chaplain = 1
 
 
@@ -147,7 +147,7 @@ var/global/list/bibleitemstates =	list("bible", "koran", "scrapbook", "bible", "
 		return
 
 	if (M.stat !=2)
-		if(M.mind && (M.mind.assigned_role == "Chaplain"))
+		if(M.mind && (M.mind.assigned_role == "Kaplan"))
 			user << "<span class='warning'>You can't heal yourself!</span>"
 			return
 		if ((istype(M, /mob/living/carbon/human) && prob(60)))
@@ -188,10 +188,10 @@ var/global/list/bibleitemstates =	list("bible", "koran", "scrapbook", "bible", "
 		return
 	if (istype(A, /turf/open/floor))
 		user << "<span class='notice'>You hit the floor with the bible.</span>"
-		if(user.mind && (user.mind.assigned_role == "Chaplain"))
+		if(user.mind && (user.mind.assigned_role == "Kaplan"))
 			for(var/obj/effect/rune/R in orange(2,user))
 				R.invisibility = 0
-	if(user.mind && (user.mind.assigned_role == "Chaplain"))
+	if(user.mind && (user.mind.assigned_role == "Kaplan"))
 		if(A.reagents && A.reagents.has_reagent("water")) //blesses all the water in the holder
 			user << "<span class='notice'>You bless [A].</span>"
 			var/water2holy = A.reagents.get_reagent_amount("water")
